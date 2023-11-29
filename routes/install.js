@@ -6,7 +6,7 @@ const AutorDAO = require('../model/Autor');
 const EditoraDAO = require('../model/Editora');
 const LivroDAO = require('../model/Livro');
 const UsuarioDAO = require('../model/Usuario');
-
+  
 router.get('/', async function(req, res) {
     await sequelize.sync({force: true})
     let aux = 0

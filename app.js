@@ -32,6 +32,11 @@ app.use('/api/editora', editoraRouter);
 var livroRouter = require('./routes/livro');
 app.use('/api/livro', livroRouter);
 
+const swaggerUi = require('swagger-ui-express')
+const swaggerFile = require('./api_livro_doc.json')
+
+app.use('/api/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
