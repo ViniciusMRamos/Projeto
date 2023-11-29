@@ -5,10 +5,13 @@ const AutorDAO = require('../model/Autor')
 const AuthAutor = require('../helpers/AuthAutor')
 const Auth = require('../helpers/Auth')
 
-router.get('/', async (req, res) => {
-    let autores = await AutorDAO.listarAutor()
 
+router.get('/', async (req, res) => {
+    // #swagger.summary = 'Lista os autores'
+
+    let autores = await AutorDAO.listarAutor()
     if(autores.length != 0){
+
         res.json({autores: autores})
     }else{
         res.json({mensagem: "Sem autor cadastrado!!"})

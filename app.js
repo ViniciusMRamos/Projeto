@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 var installRouter = require('./routes/install');
-app.use('/install', installRouter);
+app.use('/api/install', installRouter);
 
 var loginRouter = require('./routes/login')
 app.use('/api/login', loginRouter)
@@ -31,6 +31,11 @@ app.use('/api/editora', editoraRouter);
 
 var livroRouter = require('./routes/livro');
 app.use('/api/livro', livroRouter);
+
+const swaggerUi = require('swagger-ui-express')
+const swaggerFile = require('./api_livro_doc.json')
+
+app.use('/api/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
 
 // catch 404 and forward to error handler
