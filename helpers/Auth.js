@@ -14,20 +14,17 @@ module.exports = {
                 res.status(403).json({mensagem: "Token invalido, acesso negado"})}
             else {
                 req.usuario = obj.usuario
+                req.cargo = obj.cargo
                 next()
             }
         })
     }, 
 
     verificaCargo: async (req, res, next) => {
-        let usuarios = await UsuarioDAO.listar()
-        let i = 0;
-        while(i < usuarios.length){
-            if (usuarios[i].login == req.usuario && usuarios[i].cargo == 1) {
-                next()
-            } 
-            i++;
+        if(req.cargo == 1){
+            next()
+        }else{
+            res.status(403).json({mensagem: "Usuário não tem cargo para fazer edições!"})
         }
-        res.status(403).json({mensagem: "Usuário não tem cargo para fazer edições!"})
     }
 }

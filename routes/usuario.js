@@ -23,7 +23,7 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-router.post('/', AuthUsuario.validaCampos, Auth.validaAcesso, Auth.verificaCargo, async (req, res) => {
+router.post('/', Auth.validaAcesso, Auth.verificaCargo, AuthUsuario.validaCampos, async (req, res) => {
     try{
         let usuario = await UsuarioDAO.cadastrar(req.body)
         res.json({usuario: usuario})
