@@ -31,6 +31,15 @@ router.get('/', async function(req, res) {
     },
     {
       "nomeAutor": "Machado de Assis"
+    },
+    {
+      "nomeAutor": "Aluísio Azevedo"
+    },
+    {
+      "nomeAutor": "Manuel Antônio de Almeida"
+    },
+    {
+      "nomeAutor": "Anne Frank"
     }]
 
     for(aux = 0; aux < autores.length; aux++){
@@ -42,6 +51,12 @@ router.get('/', async function(req, res) {
     },
     {
       "nomeEditora": "Livraria Garnier"
+    },
+    {
+      "nomeEditora": "Moderna"
+    },
+    {
+      "nomeEditora": "Grupo Editorial Record"
     }]
 
     for(aux = 0; aux < editoras.length; aux++){
@@ -59,6 +74,24 @@ router.get('/', async function(req, res) {
       "dataPublicacao": "10/07/1899",
       "AutorId": 2,
       "EditoraId": 2
+    },
+    {
+      "titulo": "O Cortiço",
+      "dataPublicacao": "08/04/1890",
+      "AutorId": 3,
+      "EditoraId": 2
+    },
+    {
+      "titulo": "Memórias de um Sargento de Milícias",
+      "dataPublicacao": "31/06/1853",
+      "AutorId": 4,
+      "EditoraId": 3
+    },
+    {
+      "titulo": "Diário de Anne Frank",
+      "dataPublicacao": "25/05/1947",
+      "AutorId": 5,
+      "EditoraId": 4
     }]
 
     for(aux = 0; aux < livros.length; aux++){

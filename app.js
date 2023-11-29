@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 var installRouter = require('./routes/install');
-app.use('/api', installRouter);
+app.use('/install', installRouter);
 
 var loginRouter = require('./routes/login')
 app.use('/api/login', loginRouter)
