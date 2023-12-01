@@ -15,9 +15,16 @@ router.get('/', async (req, res) => {
   }
 })
 
-router.post('/', Auth.validaAcesso, Auth.verificaCargo, AuthLivro.validaCampos, async (req, res) => {
+router.post('/', Auth.validaAcesso, AuthLivro.validaCampos, async (req, res) => {
   try{
-    let  livro = await LivroDAO.cadastrar(req.body)
+    let  livro = {
+      "titulo": req.body.titulo,
+      "dataPublicacao": req.body.dataPublicacao,
+      "AutorId": req.body.AutorId,
+      "EditoraId": req.body.EditoraId,
+      "UsuarioId": req.id
+    }
+    await LivroDAO.cadastrar(livro)
     res.json({livro: livro})
   }catch(e){
     res.status(400).json({mensagem: "Falha ao cadastrar!"})
@@ -25,11 +32,15 @@ router.post('/', Auth.validaAcesso, Auth.verificaCargo, AuthLivro.validaCampos, 
             
 })
 
-router.put('/:id', Auth.validaAcesso, Auth.verificaCargo, AuthLivro.validaCampos, async (req, res) => {
+router.put('/:id', Auth.validaAcesso, AuthLivro.validaCampos, async (req, res) => {
   if(await LivroDAO.buscarPorId(req.params.id)){
       try{
-        await LivroDAO.alterar(req.body, req.params.id)
-        res.json({mensagem: "Livro alterado com suceso"})
+        if(req.body.UsuarioId){
+          res.status(400).json({mensagem: "ID de usuário que cadastrou o livro não pode ser alterado!!"})
+        }else{
+          await LivroDAO.alterar(req.body, req.params.id)
+          res.json({mensagem: "Livro alterado com suceso"})
+        }
     }catch(e){
         res.status(400).json({mensagem: "Falha ao alterar!!"})
     }

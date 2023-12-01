@@ -67,31 +67,36 @@ router.get('/', async function(req, res) {
       "titulo": "Educação como Prática da Liberdade",
       "dataPublicacao": "12/08/1967",
       "AutorId": 1,
-      "EditoraId": 1
+      "EditoraId": 1,
+      "UsuarioId": 1
     },
     {
       "titulo": "Dom Casmurro",
       "dataPublicacao": "10/07/1899",
       "AutorId": 2,
-      "EditoraId": 2
+      "EditoraId": 2,
+      "UsuarioId": 1
     },
     {
       "titulo": "O Cortiço",
       "dataPublicacao": "08/04/1890",
       "AutorId": 3,
-      "EditoraId": 2
+      "EditoraId": 2,
+      "UsuarioId": 1
     },
     {
       "titulo": "Memórias de um Sargento de Milícias",
       "dataPublicacao": "31/06/1853",
       "AutorId": 4,
-      "EditoraId": 3
+      "EditoraId": 3,
+      "UsuarioId": 1
     },
     {
       "titulo": "Diário de Anne Frank",
       "dataPublicacao": "25/05/1947",
       "AutorId": 5,
-      "EditoraId": 4
+      "EditoraId": 4,
+      "UsuarioId": 1
     }]
 
     for(aux = 0; aux < livros.length; aux++){

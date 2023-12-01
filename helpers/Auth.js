@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken')
-const UsuarioDAO = require('../model/Usuario')
 
 module.exports = {
     validaAcesso: (req, res, next) => {
@@ -15,6 +14,7 @@ module.exports = {
             else {
                 req.usuario = obj.usuario
                 req.cargo = obj.cargo
+                req.id = obj.id
                 next()
             }
         })

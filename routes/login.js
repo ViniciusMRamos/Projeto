@@ -11,7 +11,7 @@ router.get("/",  async (req, res) => {
    
     while(i < usuarios.length){
         if (usuarios[i].login == req.body.login && usuarios[i].senha == req.body.senha) {
-            let token = jwt.sign({usuario: usuarios[i].login, cargo: usuarios[i].cargo}, '123!@#', {expiresIn: '10 min'})
+            let token = jwt.sign({usuario: usuarios[i].login, cargo: usuarios[i].cargo, id: usuarios[i].id}, '123!@#', {expiresIn: '10 min'})
             res.json({logged: true, token: token})
             aux = 0;
         } 

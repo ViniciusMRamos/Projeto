@@ -67,6 +67,7 @@ const LivroModel = sequelize.define('Livro', {
 
 LivroModel.belongsTo(AutorModel)
 LivroModel.belongsTo(EditoraModel)
+LivroModel.belongsTo(UsuarioModel)
 
 
 module.exports = {
