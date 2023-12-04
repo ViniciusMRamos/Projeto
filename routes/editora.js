@@ -6,6 +6,7 @@ const Auth = require('../helpers/Auth')
 const AuthEditora = require('../helpers/AuthEditora')
 
 router.get('/', async (req, res) => {
+    // #swagger.summary = 'Lista as editoras'  
     let editoras = await EditoraDAO.listarEditora()
     if(editoras.length != 0){        
         res.json({editoras: editoras})
@@ -15,6 +16,7 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', Auth.validaAcesso, Auth.verificaCargo, AuthEditora.validaCampos, async (req, res) => {
+    // #swagger.summary = 'Cadastra a editora'  
     try {
         let editora = await EditoraDAO.cadastrar(req.body.nomeEditora)
         res.json({editora: editora})
@@ -24,6 +26,7 @@ router.post('/', Auth.validaAcesso, Auth.verificaCargo, AuthEditora.validaCampos
 })
 
 router.put('/:id', Auth.validaAcesso, Auth.verificaCargo, AuthEditora.validaCampos, async (req, res) => {
+    // #swagger.summary = 'Altera a editora'  
     if(await EditoraDAO.buscarPorId(req.params.id)){
         try{
             await EditoraDAO.alterar(req.body, req.params.id)
@@ -37,6 +40,7 @@ router.put('/:id', Auth.validaAcesso, Auth.verificaCargo, AuthEditora.validaCamp
 })
 
 router.delete('/:id', Auth.validaAcesso, Auth.verificaCargo, async (req, res) => {
+    // #swagger.summary = 'Exlui a editora'  
     if(await EditoraDAO.buscarPorId(req.params.id)){
         try{
             await EditoraDAO.deletar(req.params.id)

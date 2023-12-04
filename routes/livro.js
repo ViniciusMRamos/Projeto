@@ -7,6 +7,7 @@ const LivroDAO = require('../model/Livro');
 
 
 router.get('/', async (req, res) => {
+  // #swagger.summary = 'Lista os livros'  
   let livros = await LivroDAO.listarLivro()
   if(livros.length != 0){
     res.json({livros: livros})
@@ -16,6 +17,7 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/:id', async (req, res) => {
+  // #swagger.summary = 'Lista os livros pelo ID do usuário que efetuou o cadastro'  
   let livros = await LivroDAO.listarPorUsuario(req.params.id)
   if(livros.length != 0){
     res.json({livros: livros})
@@ -25,6 +27,7 @@ router.get('/:id', async (req, res) => {
 })
 
 router.post('/', Auth.validaAcesso, AuthLivro.validaCampos, async (req, res) => {
+  // #swagger.summary = 'Cadastra o livro'  
   try{
     let  livro = {
       "titulo": req.body.titulo,
@@ -42,6 +45,7 @@ router.post('/', Auth.validaAcesso, AuthLivro.validaCampos, async (req, res) => 
 })
 
 router.put('/:id', Auth.validaAcesso, AuthLivro.validaCampos, async (req, res) => {
+  // #swagger.summary = 'Altera o livro' 
   if(await LivroDAO.buscarPorId(req.params.id)){
       try{
         if(req.body.UsuarioId){
@@ -59,6 +63,7 @@ router.put('/:id', Auth.validaAcesso, AuthLivro.validaCampos, async (req, res) =
 })
 
 router.delete('/:id', Auth.validaAcesso, Auth.verificaCargo, async (req, res) => {
+  // #swagger.summary = 'Exclui o livro' 
   if(await LivroDAO.buscarPorId(req.params.id)){
       try{
         await LivroDAO.deletar(req.params.id)

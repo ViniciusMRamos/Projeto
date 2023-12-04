@@ -7,8 +7,7 @@ const Auth = require('../helpers/Auth')
 
 
 router.get('/', async (req, res) => {
-    // #swagger.summary = 'Lista os autores'
-
+    // #swagger.summary = 'Lista os autores'    
     let autores = await AutorDAO.listarAutor()
     if(autores.length != 0){
 
@@ -20,6 +19,7 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', Auth.validaAcesso, Auth.verificaCargo, AuthAutor.validaCampos, async (req, res) => {
+    // #swagger.summary = 'Cadastro de autor'
     try {
         let autor = await AutorDAO.cadastrar(req.body.nomeAutor)
         res.json({autor: autor})
@@ -29,6 +29,7 @@ router.post('/', Auth.validaAcesso, Auth.verificaCargo, AuthAutor.validaCampos, 
 })
 
 router.put('/:id', Auth.validaAcesso, Auth.verificaCargo, AuthAutor.validaCampos, async (req, res) => {
+    // #swagger.summary = 'Alteração de autor'
     if(await AutorDAO.buscarPorId(req.params.id)){
         try{
             await AutorDAO.alterar(req.body, req.params.id)
@@ -42,6 +43,7 @@ router.put('/:id', Auth.validaAcesso, Auth.verificaCargo, AuthAutor.validaCampos
 })
 
 router.delete('/:id', Auth.validaAcesso, Auth.verificaCargo, async (req, res) => {
+    // #swagger.summary = 'Exclusão de autor'
     if(await AutorDAO.buscarPorId(req.params.id)){
         try{
             await AutorDAO.deletar(req.params.id)

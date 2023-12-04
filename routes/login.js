@@ -5,6 +5,7 @@ const router = express.Router()
 const UsuarioDAO = require('../model/Usuario')
 
 router.get("/",  async (req, res) => {
+    // #swagger.summary = 'Valida as credênciais do usuário' 
     let usuarios = await UsuarioDAO.listar()
     let aux = 1;
     let i = 0;

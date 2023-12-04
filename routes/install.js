@@ -8,7 +8,8 @@ const LivroDAO = require('../model/Livro');
 const UsuarioDAO = require('../model/Usuario');
   
 router.get('/', async function(req, res) {
-    await sequelize.sync({force: true})
+  // #swagger.summary = 'Instala o banco de dados e insere alguns dados'    
+  await sequelize.sync({force: true})
     let aux = 0
 
     let usuarios = [{

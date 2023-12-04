@@ -6,6 +6,7 @@ const Auth = require('../helpers/Auth')
 const AuthUsuario = require('../helpers/AuthUsuario')
 
 router.get('/',  async (req, res) => {
+    // #swagger.summary = 'Lista os usuários' 
     let usuarios = await UsuarioDAO.listar()
     if(usuarios.length != 0){
         res.json({usuarios: usuarios})
@@ -15,6 +16,7 @@ router.get('/',  async (req, res) => {
 })
 
 router.get('/:id', async (req, res) => {
+    // #swagger.summary = 'Busca o usuário pelo ID' 
     let usuario = await UsuarioDAO.buscarPorId(req.params.id)
     if(usuario != null){
        res.json({usuario: usuario})
@@ -24,6 +26,7 @@ router.get('/:id', async (req, res) => {
 })
 
 router.post('/', Auth.validaAcesso, Auth.verificaCargo, AuthUsuario.validaCampos, async (req, res) => {
+    // #swagger.summary = 'Cadastro do usuário' 
     try{
         let usuario = await UsuarioDAO.cadastrar(req.body)
         res.json({usuario: usuario})
@@ -33,6 +36,7 @@ router.post('/', Auth.validaAcesso, Auth.verificaCargo, AuthUsuario.validaCampos
 })
 
 router.put('/:id', AuthUsuario.validaCampos, Auth.validaAcesso, Auth.verificaCargo, async (req, res) => {
+    // #swagger.summary = 'Altera o usuário' 
     if(await UsuarioDAO.buscarPorId(req.params.id)){
         try{
             await UsuarioDAO.alterar(req.body, req.params.id)
@@ -46,6 +50,7 @@ router.put('/:id', AuthUsuario.validaCampos, Auth.validaAcesso, Auth.verificaCar
 })
 
 router.delete('/:id', Auth.validaAcesso, Auth.verificaCargo, async(req, res) => {
+    // #swagger.summary = 'Exclui o usuário' 
     if(await UsuarioDAO.buscarPorId(req.params.id)){
         try{
             await UsuarioDAO.deletar(req.params.id)

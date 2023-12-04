@@ -13,6 +13,7 @@
   "paths": {
     "/api/install/": {
       "get": {
+        "summary": "Instala o banco de dados e insere alguns dados",
         "description": "",
         "responses": {
           "200": {
@@ -23,7 +24,8 @@
     },
     "/api/login/": {
       "get": {
-        "description": "",
+        "summary": "Valida as credênciais do usuário",
+        "description": "Efetua o login na API!",
         "responses": {
           "200": {
             "description": "OK"
@@ -36,7 +38,8 @@
     },
     "/api/usuario/": {
       "get": {
-        "description": "",
+        "summary": "Lista os usuários",
+        "description": "Lista todos os usuários cadastrados na API!",
         "responses": {
           "200": {
             "description": "OK"
@@ -44,7 +47,8 @@
         }
       },
       "post": {
-        "description": "",
+        "summary": "Cadastro do usuário",
+        "description": "Efetua o cadastro de usuário!",
         "parameters": [
           {
             "name": "authorization",
@@ -58,13 +62,16 @@
               "type": "object",
               "properties": {
                 "login": {
-                  "example": "any"
+                  "type": "string",
+                  "description": "Login do usuário"
                 },
                 "senha": {
-                  "example": "any"
+                  "type": "string",
+                  "description": "Senha do usuário"
                 },
                 "cargo": {
-                  "example": "any"
+                  "type": "int",
+                  "description": "Login do usuário"
                 }
               }
             }
@@ -85,6 +92,7 @@
     },
     "/api/usuario/{id}": {
       "get": {
+        "summary": "Busca o usuário pelo ID",
         "description": "",
         "parameters": [
           {
@@ -104,7 +112,8 @@
         }
       },
       "put": {
-        "description": "",
+        "summary": "Altera o usuário",
+        "description": "Efetua a alteração do usuário pelo ID informado!",
         "parameters": [
           {
             "name": "id",
@@ -149,7 +158,8 @@
         }
       },
       "delete": {
-        "description": "",
+        "summary": "Exclui o usuário",
+        "description": "Efetua a exclusão do usuário pelo ID informado!",
         "parameters": [
           {
             "name": "id",
@@ -179,7 +189,7 @@
     "/api/autor/": {
       "get": {
         "summary": "Lista os autores",
-        "description": "",
+        "description": "Lista todos os autores cadastrados na API!",
         "responses": {
           "200": {
             "description": "OK"
@@ -187,7 +197,8 @@
         }
       },
       "post": {
-        "description": "",
+        "summary": "Cadastro de autor",
+        "description": "Efetua o cadastro de autor na API!",
         "parameters": [
           {
             "name": "authorization",
@@ -222,7 +233,8 @@
     },
     "/api/autor/{id}": {
       "put": {
-        "description": "",
+        "summary": "Alteração de autor",
+        "description": "Efetua a alteração do autor pelo ID informado!",
         "parameters": [
           {
             "name": "id",
@@ -261,7 +273,8 @@
         }
       },
       "delete": {
-        "description": "",
+        "summary": "Exclusão de autor",
+        "description": "Efetua a exclusão do autor pelo ID informado!",
         "parameters": [
           {
             "name": "id",
@@ -290,7 +303,8 @@
     },
     "/api/editora/": {
       "get": {
-        "description": "",
+        "summary": "Lista as editoras",
+        "description": "Lista todas as editoras cadastradas na API!",
         "responses": {
           "200": {
             "description": "OK"
@@ -298,7 +312,8 @@
         }
       },
       "post": {
-        "description": "",
+        "summary": "Cadastra a editora",
+        "description": "Efetua o cadastro de uma editora!",
         "parameters": [
           {
             "name": "authorization",
@@ -333,7 +348,8 @@
     },
     "/api/editora/{id}": {
       "put": {
-        "description": "",
+        "summary": "Altera a editora",
+        "description": "Efetua a alteração da editora pelo ID informado!",
         "parameters": [
           {
             "name": "id",
@@ -372,7 +388,8 @@
         }
       },
       "delete": {
-        "description": "",
+        "summary": "Exclui a editora",
+        "description": "Efetua a exclusão da editora pelo ID informado!",
         "parameters": [
           {
             "name": "id",
@@ -401,7 +418,8 @@
     },
     "/api/livro/": {
       "get": {
-        "description": "",
+        "summary": "Lista os livros",
+        "description": "Lista todos os livros cadastrados na API!",
         "responses": {
           "200": {
             "description": "OK"
@@ -409,7 +427,8 @@
         }
       },
       "post": {
-        "description": "",
+        "summary": "Cadastra o livro",
+        "description": "Efetua o cadastro de um livro!",
         "parameters": [
           {
             "name": "authorization",
@@ -453,7 +472,8 @@
     },
     "/api/livro/{id}": {
       "get": {
-        "description": "",
+        "summary": "Lista os livros pelo ID do usuário que efetuou o cadastro",
+        "description": "Lista os livros que um usuário cadastrou!",
         "parameters": [
           {
             "name": "id",
@@ -469,7 +489,8 @@
         }
       },
       "put": {
-        "description": "",
+        "summary": "Altera o livro",
+        "description": "Efetua a alteração do livro pelo ID informado!",
         "parameters": [
           {
             "name": "id",
@@ -520,7 +541,8 @@
         }
       },
       "delete": {
-        "description": "",
+        "summary": "Exclui o livro",
+        "description": "Efetua a exclusão do livro pelo ID informado!",
         "parameters": [
           {
             "name": "id",
