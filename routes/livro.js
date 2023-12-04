@@ -15,6 +15,15 @@ router.get('/', async (req, res) => {
   }
 })
 
+router.get('/:id', async (req, res) => {
+  let livros = await LivroDAO.listarPorUsuario(req.params.id)
+  if(livros.length != 0){
+    res.json({livros: livros})
+  }else{
+    res.json({mensagem: "Usuário não efetuou nenhum cadastro!"})
+  }
+})
+
 router.post('/', Auth.validaAcesso, AuthLivro.validaCampos, async (req, res) => {
   try{
     let  livro = {

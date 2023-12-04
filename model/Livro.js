@@ -1,4 +1,4 @@
-const {LivroModel} = require("./bd")
+const {LivroModel, UsuarioModel} = require("./bd")
 
 module.exports = {
     cadastrar: async(livro) => {
@@ -15,6 +15,10 @@ module.exports = {
 
     listarLivro: async() => {
         return await LivroModel.findAll()
+    },
+    
+    listarPorUsuario: async(id) => {
+        return await LivroModel.findAll({where: {UsuarioId: id}})
     },
 
     buscarPorId: async(id) => {

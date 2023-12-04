@@ -422,16 +422,16 @@
             "schema": {
               "type": "object",
               "properties": {
-                "AutorId": {
-                  "example": "any"
-                },
-                "EditoraId": {
-                  "example": "any"
-                },
                 "titulo": {
                   "example": "any"
                 },
                 "dataPublicacao": {
+                  "example": "any"
+                },
+                "AutorId": {
+                  "example": "any"
+                },
+                "EditoraId": {
                   "example": "any"
                 }
               }
@@ -452,6 +452,22 @@
       }
     },
     "/api/livro/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
       "put": {
         "description": "",
         "parameters": [
@@ -472,6 +488,9 @@
             "schema": {
               "type": "object",
               "properties": {
+                "UsuarioId": {
+                  "example": "any"
+                },
                 "AutorId": {
                   "example": "any"
                 },
