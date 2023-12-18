@@ -19,6 +19,14 @@ module.exports = {
 
     buscarPorId: async(id) => {
         return await UsuarioModel.findByPk(id)
-    }   
-    
+    },
+
+    buscaLogin: async function (login, senha) {
+        return await UsuarioModel.findOne({
+            where: {
+            login: login,
+            senha: senha
+        }});
+    }
+   
 }

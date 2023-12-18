@@ -1,4 +1,4 @@
-const {LivroModel, UsuarioModel} = require("./bd")
+const {LivroModel} = require("./bd")
 
 module.exports = {
     cadastrar: async(livro) => {
